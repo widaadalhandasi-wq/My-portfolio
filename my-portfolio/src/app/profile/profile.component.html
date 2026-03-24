@@ -1,67 +1,67 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="profile">
-        <!-- *ngIf -->
-        <div class="card-body p-5 text-center">
+   <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="profile">
+            <!-- *ngIf -->
+            <div class="card-body p-5 text-center">
 
-            <h3 class="card-title mb-4 fw-bold">User Profile</h3>
+                <h3 class="card-title mb-5 fw-bold">User Profile</h3>
 
-            <div *ngIf="isLoggedIn; else loginMessage">
-                <div class="alert alert-success d-flex align-items-center justify-content-center">
-                    <p class="mb-0">Welcome back, <strong>{{Username}}</strong>!</p>
+                <div *ngIf="isLoggedIn; else loginMessage">
+                    <div class="alert alert-success d-flex align-items-center justify-content-center">
+                        <p class="mb-0">Welcome back, <strong>{{Username}}</strong>!</p>
+                    </div>
                 </div>
-            </div>
 
-            <ng-template #loginMessage>
-                <div class="alert alert-danger d-flex align-items-center justify-content-center">
-                    <p class="mb-0">Please log in to access your data.</p>
+                <ng-template #loginMessage>
+                    <div class="alert alert-danger d-flex align-items-center justify-content-center">
+                        <p class="mb-0">Please log in to access your data.</p>
+                    </div>
+                </ng-template>
+
+                <div class="d-grid gap-2 mt-4">
+                    <button (click)="toggleLogin()" class="btn btn-primary">
+                        Toggle Login
+                    </button>
                 </div>
-            </ng-template>
 
-            <div class="d-grid gap-2 mt-4">
-                <button (click)="toggleLogin()" class="btn btn-primary">
-                    Toggle Login
-                </button>
             </div>
-
-        </div>
-        <!-- *ngFor -->
-        <div class="card mt-3">
-            <div class="card-header fw-bold">
-                My Skills
+            <!-- *ngFor -->
+            <div class="card mt-3">
+                <div class="card-header fw-bold">
+                    My Skills
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let item of skills; let i = index" class="list-group-item">
+                        {{ i + 1 }}. {{ item }}
+                    </li>
+                </ul>
             </div>
-            <ul class="list-group list-group-flush">
-                <li *ngFor="let item of skills; let i = index" class="list-group-item">
-                    {{ i + 1 }}. {{ item }}
-                </li>
-            </ul>
-        </div>
-        <!-- *ngSwitch -->
-        <div class="mt-4 p-3 border rounded bg-light shadow-sm">
-            <h6 class="mb-3">User Authorization:</h6>
+            <!-- *ngSwitch -->
+            <div class="mt-4 p-3 border rounded bg-light shadow-sm">
+                <h6 class="mb-3">User Authorization:</h6>
 
-            <div [ngSwitch]="userRole">
+                <div [ngSwitch]="userRole">
 
-                <span *ngSwitchCase="'admin'"
-                    class="badge rounded-pill bg-white text-danger border border-danger p-2 px-3">
-                    🔴 Admin Panel
-                </span>
+                    <span *ngSwitchCase="'admin'"
+                        class="badge rounded-pill bg-white text-danger border border-danger p-2 px-3">
+                        🔴 Admin Panel
+                    </span>
 
-                <span *ngSwitchCase="'editor'"
-                    class="badge rounded-pill bg-white text-warning border border-warning p-2 px-3">
-                    🟡 Editor Access
-                </span>
+                    <span *ngSwitchCase="'editor'"
+                        class="badge rounded-pill bg-white text-warning border border-warning p-2 px-3">
+                        🟡 Editor Access
+                    </span>
 
-                <span *ngSwitchCase="'viewer'"
-                    class="badge rounded-pill bg-white text-success border border-success p-2 px-3">
-                    🟢 View Only
-                </span>
+                    <span *ngSwitchCase="'viewer'"
+                        class="badge rounded-pill bg-white text-success border border-success p-2 px-3">
+                        🟢 View Only
+                    </span>
 
-                <span *ngSwitchDefault
-                    class="badge rounded-pill bg-white text-secondary border border-secondary p-2 px-3">
-                    ⚪ Unknown Role
-                </span>
+                    <span *ngSwitchDefault
+                        class="badge rounded-pill bg-white text-secondary border border-secondary p-2 px-3">
+                        ⚪ Unknown Role
+                    </span>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
